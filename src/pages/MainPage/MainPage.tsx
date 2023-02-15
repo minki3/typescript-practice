@@ -7,6 +7,14 @@ interface Data {
   title: string;
   bdoy: string;
 }
+interface OverLoad {
+  (a: number, b: number): number;
+  (a: number, b: number, c: number): number;
+}
+
+interface Print {
+  <T, U>(a: T, b: U): [T, U];
+}
 
 function MainPage() {
   const [isToggle, setIsToggle] = useState<boolean>(false);
@@ -38,11 +46,43 @@ function MainPage() {
 
   console.log(data);
 
-  const generic = <T, E>(e: T, f: E): T +E=> {
-    return e + f;
+  const generic = <T, E>(e: T, f: E) => {
+    if (typeof e === "string") {
+      return [e, f];
+    }
+    return;
   };
-  console.log(generic<number>(3, 3));
+  const generic2 = <T,>(e: T): T => {
+    return e;
+  };
+
+  const number = (e: number) => {
+    return e;
+  };
+
+  const overLoad: OverLoad = (a, b, c?: number) => {
+    if (c) return a + b + c;
+    return a + b;
+  };
+
+  const print: Print = (a, b) => {
+    return [a, b];
+  };
+
+  const aa = { name: "a" };
+  console.log(aa.name);
+
+  console.log(print("1", false));
+  console.log(overLoad(1, 2, 3));
+  console.log(overLoad(1, 2));
+
+  console.log(generic("dd", "abcde"));
   // console.log(generic<string>("abcde"));
+  console.log(generic2(1));
+  console.log(generic2(false));
+  console.log(generic2("hi"));
+  console.log(number(4));
+
   return (
     <>
       {data.map((item) => {
