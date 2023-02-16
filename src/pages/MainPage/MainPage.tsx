@@ -16,6 +16,10 @@ interface Print {
   <T, U>(a: T, b: U): [T, U];
 }
 
+interface Plus {
+  (a: number, b: number, c?: number): number;
+}
+
 function MainPage() {
   const [isToggle, setIsToggle] = useState<boolean>(false);
   const [data, setData] = useState<Data[]>([]);
@@ -45,6 +49,14 @@ function MainPage() {
   }, []);
 
   console.log(data);
+
+  const plus: Plus = (a, b, c) => {
+    if (c) return a + b + c;
+    return a + b;
+  };
+
+  console.log(plus(1, 2, 5));
+  console.log(plus(1, 5));
 
   const generic = <T, E>(e: T, f: E) => {
     if (typeof e === "string") {
