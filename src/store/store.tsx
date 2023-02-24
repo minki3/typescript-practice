@@ -3,11 +3,12 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import combineSlice from "./combineSlice";
 import booleanSlice from "./booleanSlice";
 import { api } from "./api";
-
+import inuptSlice from "./inuptSlice";
 const store = configureStore({
   reducer: {
     combineSlice: combineSlice,
     booleanSlice: booleanSlice,
+    inputSlice: inuptSlice,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
