@@ -3,6 +3,10 @@ import ReactDOM from "react-dom/client";
 import Router from "./Router";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import { QueryClient, QueryClientProvider } from "react-query";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -10,7 +14,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router />
+      <QueryClientProvider client={queryClient}>
+        <Router />
+        {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+      </QueryClientProvider>
     </Provider>
   </React.StrictMode>
 );
