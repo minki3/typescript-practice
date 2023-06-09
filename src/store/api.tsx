@@ -1,13 +1,21 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+//https://jsonplaceholder.typicode.com/posts
+
+type data = {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+};
 export const api = createApi({
-  reducerPath: "data",
+  reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsonplaceholder.typicode.com",
+    baseUrl: "https://jsonplaceholder.typicode.com/",
   }),
   endpoints: (buider) => ({
-    getPost: buider.query({
-      query: (postId) => ({ url: `/posts/${postId}` }),
+    getPost: buider.query<data, string>({
+      query: (post) => `${post}`,
       // providesTags: (result, error, { postId }) => [
       //   { type: "post", id: postId },
       // ],
@@ -15,4 +23,4 @@ export const api = createApi({
   }),
 });
 
-export const { useGetPostQuery }: any = api;
+export const { useGetPostQuery } = api;
