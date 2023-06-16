@@ -6,6 +6,8 @@ import RtkQuery from "./pages/rtkQuery/rtkQuery";
 import Page from "./pages/responsiveWeb/Page";
 import ReactQuery from "./pages/react-query/ReactQuery";
 import Practice from "./pages/react-hook-form/Practice";
+import PdfPage from "./pages/pdf/Pdf";
+import ReactScrollPage from "./pages/react-scroll/ReactScroll";
 
 function Router() {
   return (
@@ -17,6 +19,8 @@ function Router() {
         <Route path="/page" element=<Page /> />
         <Route path="/reactquery" element=<ReactQuery /> />
         <Route path="/reactform" element=<Practice /> />
+        <Route path="/pdf" element=<PdfPage /> />
+        <Route path="/scroll" element=<ReactScrollPage /> />
       </Routes>
     </BrowserRouter>
   );
