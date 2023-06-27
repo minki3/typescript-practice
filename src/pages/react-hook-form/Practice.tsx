@@ -14,7 +14,7 @@ const initalValue: InitalType = {
   name: [],
 };
 export default function Practice() {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, register } = useForm({
     mode: "onBlur",
     // defaultValues: initalValue,
   });
@@ -28,41 +28,17 @@ export default function Practice() {
   const submit = (data: any) => {
     console.log(data);
   };
-  const handlePrintToPDF = () => {
-    window.print();
-  };
-  // const handlePrintToPDF = () => {
-  //   const doc = new jsPDF();
-  //   const element = document.getElementById("pdf-content");
-
-  //   doc.html(element, {
-  //     callback: function (pdf) {
-  //       pdf.save("document.pdf");
-  //     },
-  //     x: 10,
-  //     y: 10,
-  //   });
-  // };
-
   return (
-    <div id="pdf-content" className="flex">
+    <div className="flex">
       <form onSubmit={handleSubmit(submit)}>
-        {fields.map((item, idx) => {
-          return (
-            <div key={idx}>
-              <input />
-              <p>sdafsf</p>
-            </div>
-          );
-        })}
+        {" "}
+        {fields.map((field, index) => (
+          <input
+            key={field.id} // important to include key with field's id
+            {...register(`test.${index}.value`)}
+          />
+        ))}
       </form>
-      <p>sdaffas</p>
-      <PDFViewer>
-        <Form />
-      </PDFViewer>
-      <button onClick={handlePrintToPDF}>Save as PDF</button>
     </div>
   );
 }
-// ReactPDF.render(<Form />, `${__dirname}/example.pdf`);
-// ReactDOM.render(<App />, document.getElementById("root"));
