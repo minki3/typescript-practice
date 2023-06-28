@@ -7,37 +7,63 @@ import ReactPDF from "@react-pdf/renderer";
 import jsPDF from "jspdf";
 
 interface InitalType {
-  name: string[];
+  interface: { name: string }[];
 }
 
-const initalValue: InitalType = {
-  name: [],
+const inital: InitalType = {
+  interface: [{ name: "minki" }],
 };
 export default function Practice() {
-  const { control, handleSubmit, register } = useForm({
+  const { control, handleSubmit, register } = useForm<InitalType>({
     mode: "onBlur",
-    // defaultValues: initalValue,
+    defaultValues: inital,
   });
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-    {
-      control, // control props comes from useForm (optional: if you are using FormContext)
-      name: "name", // unique name for your Field Array
-    }
-  );
+  const {
+    fields: initalValuefield,
+    append,
+    prepend,
+    remove,
+    swap,
+    move,
+    insert,
+  } = useFieldArray({
+    control, // control props comes from useForm (optional: if you are using FormContext)
+    name: "interface", // unique name for your Field Array
+  });
 
   const submit = (data: any) => {
     console.log(data);
   };
+  console.log(inital.interface);
   return (
     <div className="flex">
       <form onSubmit={handleSubmit(submit)}>
-        {" "}
-        {fields.map((field, index) => (
-          <input
-            key={field.id} // important to include key with field's id
-            {...register(`test.${index}.value`)}
-          />
-        ))}
+        {initalValuefield.map((field, index) => {
+          return (
+            <div key={field.id}>
+              <input {...register(`interface.${index}.name`)} />
+              <button
+                onClick={() => {
+                  console.log(initalValuefield.length);
+                  append({ name: "" });
+                }}
+              >
+                추가
+              </button>
+              <button
+                onClick={() => {
+                  console.log(inital.interface.length);
+                  if (initalValuefield.length === 1) return alert("불가능");
+                  remove(index);
+                }}
+              >
+                삭제
+              </button>
+            </div>
+          );
+        })}
+
+        <button type="submit">전송</button>
       </form>
     </div>
   );
