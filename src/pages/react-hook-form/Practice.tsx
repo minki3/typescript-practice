@@ -7,11 +7,11 @@ import ReactPDF from "@react-pdf/renderer";
 import jsPDF from "jspdf";
 
 interface InitalType {
-  interface: { name: string }[];
+  interface: { name: string; age: string }[];
 }
 
 const inital: InitalType = {
-  interface: [{ name: "minki" }],
+  interface: [{ name: "", age: "" }],
 };
 export default function Practice() {
   const { control, handleSubmit, register } = useForm<InitalType>({
@@ -41,18 +41,23 @@ export default function Practice() {
         {initalValuefield.map((field, index) => {
           return (
             <div key={field.id}>
-              <input {...register(`interface.${index}.name`)} />
+              <input
+                placeholder="이름"
+                {...register(`interface.${index}.name`)}
+              />
+              <input
+                placeholder="나이"
+                {...register(`interface.${index}.age`)}
+              />
               <button
                 onClick={() => {
-                  console.log(initalValuefield.length);
-                  append({ name: "" });
+                  append({ name: "", age: "" });
                 }}
               >
                 추가
               </button>
               <button
                 onClick={() => {
-                  console.log(inital.interface.length);
                   if (initalValuefield.length === 1) return alert("불가능");
                   remove(index);
                 }}
