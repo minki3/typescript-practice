@@ -7,11 +7,25 @@ import ReactPDF from "@react-pdf/renderer";
 import jsPDF from "jspdf";
 
 interface InitalType {
-  interface: { name: string; age: string }[];
+  interface: {
+    name: string;
+    age: string;
+    second: {
+      first: string;
+      second: string;
+      third: { first: string; second: string }[];
+    }[];
+  }[];
 }
 
 const inital: InitalType = {
-  interface: [{ name: "", age: "" }],
+  interface: [
+    {
+      name: "",
+      age: "",
+      second: [{ first: "", second: "", third: [{ first: "", second: "" }] }],
+    },
+  ],
 };
 export default function Practice() {
   const { control, handleSubmit, register } = useForm<InitalType>({
@@ -49,9 +63,40 @@ export default function Practice() {
                 placeholder="나이"
                 {...register(`interface.${index}.age`)}
               />
+              <input
+                placeholder="second.first"
+                {...register(`interface.${index}.second.${index}.first`)}
+              />
+              <input
+                placeholder="second.second"
+                {...register(`interface.${index}.second.${index}.second`)}
+              />
+              <input
+                placeholder="third.first"
+                {...register(
+                  `interface.${index}.second.${index}.third.${index}.first`
+                )}
+              />
+              <input
+                placeholder="third.second"
+                {...register(
+                  `interface.${index}.second.${index}.third.${index}.second`
+                )}
+              />
+
               <button
                 onClick={() => {
-                  append({ name: "", age: "" });
+                  append({
+                    name: "",
+                    age: "",
+                    second: [
+                      {
+                        first: "",
+                        second: "",
+                        third: [{ first: "", second: "" }],
+                      },
+                    ],
+                  });
                 }}
               >
                 추가
