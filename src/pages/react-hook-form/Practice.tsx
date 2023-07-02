@@ -1,10 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
-import Form from "./Form";
-import View from "./View";
-import { PDFViewer } from "@react-pdf/renderer";
-import ReactPDF from "@react-pdf/renderer";
-import jsPDF from "jspdf";
 
 interface InitalType {
   interface: {
@@ -114,6 +109,13 @@ export default function Practice() {
         })}
 
         <button type="submit">전송</button>
+        <button
+          onClick={() => {
+            window.print();
+          }}
+        >
+          pdf 저장
+        </button>
       </form>
     </div>
   );
