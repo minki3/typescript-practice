@@ -8,6 +8,7 @@ import ReactQuery from "./pages/react-query/ReactQuery";
 import Practice from "./pages/react-hook-form/Practice";
 import PdfPage from "./pages/pdf/Pdf";
 import ReactScrollPage from "./pages/react-scroll/ReactScroll";
+import ContextCheck from "./pages/ContextCheck/ContextCheck";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/reactform" element=<Practice /> />
         <Route path="/pdf" element=<PdfPage /> />
         <Route path="/scroll" element=<ReactScrollPage /> />
+        <Route path="/context" element=<ContextCheck /> />
       </Routes>
     </BrowserRouter>
   );

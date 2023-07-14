@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "./index.css";
-import { firstContextProvider, firstContext } from "./Context";
+import { FirstContextProvider, firstContext } from "./Context";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient();
@@ -17,14 +17,14 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <firstContextProvider>
-      <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-          <Router />
-          {/* <ReactQueryDevtools initialIsOpen={true} /> */}
-        </QueryClientProvider>
-      </Provider>
-    </firstContextProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <FirstContextProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <Router />
+        {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+      </QueryClientProvider>
+    </Provider>
+  </FirstContextProvider>
+  // </React.StrictMode>
 );
