@@ -13,7 +13,7 @@ export const FirstContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [count, setCount] = useState("1");
+  const [count, setCount] = useState("");
 
   const input = (id: string) => {
     if (count !== id) {
@@ -27,9 +27,9 @@ export const FirstContextProvider = ({
     setCount((prev) => prev + 1);
   };
 
-  useEffect(() => {
-    console.log("hi");
-  }, [count]);
+  // useEffect(() => {
+  //   console.log("hi");
+  // }, [count]);
 
   return (
     <firstContext.Provider value={{ count, input, output, plus }}>

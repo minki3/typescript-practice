@@ -3,10 +3,11 @@ import { Default, Mobile, Tablet, Desktop } from "./ResponsiveWeb";
 import Test from "./Test";
 import Test2 from "./Test2";
 import { useFirst } from "../../Context";
+import SecondPage from "./SecondPage";
 
 const Page = () => {
-  const first = useFirst();
-  console.log(first.count);
+  const { count, input, output, plus } = useFirst();
+
   return (
     <div>
       <Default children={<Test />}></Default>
@@ -20,7 +21,22 @@ const Page = () => {
       <Desktop>
         <div>desktop</div>
       </Desktop>
-      <div>{first.count}</div>
+      <div>{count}</div>
+      <button
+        onClick={() => {
+          input(3);
+        }}
+      >
+        1
+      </button>
+      <button
+        onClick={() => {
+          plus();
+        }}
+      >
+        plus
+      </button>
+      <SecondPage />
     </div>
   );
 };
