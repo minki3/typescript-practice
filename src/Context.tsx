@@ -24,7 +24,9 @@ export const FirstContextProvider = ({
     setCount("");
   };
   const plus = () => {
-    setCount((prev) => prev + 1);
+    if (count === "") {
+      alert("숫자가 없습니다.");
+    } else setCount((prev) => prev + 1);
   };
 
   // useEffect(() => {

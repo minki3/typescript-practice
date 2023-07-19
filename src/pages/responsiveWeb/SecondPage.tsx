@@ -1,8 +1,11 @@
 import React from "react";
 
-const SecondPage = () => {
-  console.log("render");
-  return <div>ffdf</div>;
+interface Props {
+  count: number;
+}
+const SecondPage = ({ count }: Props) => {
+  console.log("Secondrender");
+  return <div>second : {count}</div>;
 };
 
 export default React.memo(SecondPage);
