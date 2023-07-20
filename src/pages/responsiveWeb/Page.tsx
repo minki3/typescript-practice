@@ -64,7 +64,16 @@ const Page = () => {
       </button>
       <SecondPage count={count} />
       <ThirdPage />
-      <CustomInput
+
+      <button onClick={reset}>reset</button>
+    </div>
+  );
+};
+
+export default Page;
+
+{
+  /* <CustomInput
         type="text"
         placeholder="name"
         ref={nameRef}
@@ -78,10 +87,5 @@ const Page = () => {
         name="passward"
         onChange={onChange}
         value={user.passward}
-      />
-      <button onClick={reset}>reset</button>
-    </div>
-  );
-};
-
-export default Page;
+      /> */
+}
