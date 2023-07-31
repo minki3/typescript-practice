@@ -1,6 +1,9 @@
 import { useEffect, useReducer } from "react";
 
 export default function Page3() {
+  useEffect(() => {
+    console.log("3");
+  });
   const increment = "INCREMENT";
   const decrement = "DECREMENT";
 

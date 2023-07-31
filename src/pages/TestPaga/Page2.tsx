@@ -7,10 +7,9 @@ import React from "react";
 //   count: number;
 // }
 
-const Page2 = () => {
-  useEffect(() => {
-    console.log("page2 render !");
-  });
+const Page2 = ({ homo }: { homo: number }) => {
+  console.log("page2 render !");
+
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
 
@@ -23,11 +22,13 @@ const Page2 = () => {
   functioncallback();
   return (
     <div>
-      <Page3 />
+      {/* <Page3 /> */}
+      <div>{homo}</div>
       <button onClick={() => setX((prev) => prev + 1)}>X</button>
       <button onClick={() => setY((prev) => prev + 1)}>Y</button>
     </div>
   );
 };
 
-export default React.memo(Page2);
+// export default React.memo(Page2);
+export default Page2;

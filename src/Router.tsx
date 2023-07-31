@@ -10,6 +10,8 @@ import PdfPage from "./pages/pdf/Pdf";
 import ReactScrollPage from "./pages/react-scroll/ReactScroll";
 import ContextCheck from "./pages/ContextCheck/ContextCheck";
 import TestPage from "./pages/TestPaga/TestPage";
+import Component from "./pages/Composite/Component";
+
 function Router() {
   return (
     <BrowserRouter>
@@ -24,6 +26,7 @@ function Router() {
         <Route path="/scroll" element=<ReactScrollPage /> />
         <Route path="/context" element=<ContextCheck /> />
         <Route path="/test" element=<TestPage /> />
+        <Route path="/composite" element=<Component /> />
       </Routes>
     </BrowserRouter>
   );
