@@ -4,7 +4,6 @@ interface Props {
   count: number;
 }
 const SecondPage = ({ count }: Props) => {
-  console.log("Secondrender");
   return <div>second : {count}</div>;
 };
 

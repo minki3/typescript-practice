@@ -10,10 +10,14 @@ import CustomInput from "./CustomInput";
 const Page = () => {
   const { count, input, output, plus } = useFirst();
 
-  const [user, setUser] = useState({ name: "", passward: "" });
-
+  const [user, setUser] = useState({
+    name: "",
+    passward: "",
+  });
+  console.log("state : ", user);
   const nameRef = useRef<HTMLInputElement>(null);
-  console.log(user);
+
+  const passwardRef = useRef<HTMLInputElement>(null);
 
   const onChange = (e: any) => {
     const { value, name } = e.target;
@@ -26,6 +30,14 @@ const Page = () => {
     setUser({ name: "", passward: "" });
     console.log("reset !");
     nameRef.current?.focus();
+  };
+
+  const submit = () => {
+    setUser({
+      name: nameRef.current?.value || "",
+      passward: passwardRef.current?.value || "",
+    });
+    console.log("submit !");
   };
   return (
     <div>
@@ -64,8 +76,22 @@ const Page = () => {
       </button>
       <SecondPage count={count} />
       <ThirdPage />
+      <CustomInput type="text" placeholder="test" name="name" ref={nameRef} />
+      <CustomInput
+        type="text"
+        placeholder="test"
+        name="passward"
+        ref={passwardRef}
+      />
+      {/* <CustomInput
+        type="text"
+        placeholder="test"
+        name="passward"
+        ref={nameRef2}
+      /> */}
 
       <button onClick={reset}>reset</button>
+      <button onClick={submit}>비제어 컴포넌트</button>
     </div>
   );
 };
