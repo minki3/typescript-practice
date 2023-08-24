@@ -11,6 +11,7 @@ import ReactScrollPage from "./pages/react-scroll/ReactScroll";
 import ContextCheck from "./pages/ContextCheck/ContextCheck";
 import TestPage from "./pages/TestPaga/TestPage";
 import Component from "./pages/Composite/Component";
+import CssPractice from "./pages/CssPractice/Css";
 
 function Router() {
   return (
@@ -27,6 +28,7 @@ function Router() {
         <Route path="/context" element=<ContextCheck /> />
         <Route path="/test" element=<TestPage /> />
         <Route path="/composite" element=<Component /> />
+        <Route path="/css" element=<CssPractice /> />
       </Routes>
     </BrowserRouter>
   );

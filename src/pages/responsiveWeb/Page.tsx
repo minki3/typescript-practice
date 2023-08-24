@@ -83,13 +83,6 @@ const Page = () => {
         name="passward"
         ref={passwardRef}
       />
-      {/* <CustomInput
-        type="text"
-        placeholder="test"
-        name="passward"
-        ref={nameRef2}
-      /> */}
-
       <button onClick={reset}>reset</button>
       <button onClick={submit}>비제어 컴포넌트</button>
     </div>
