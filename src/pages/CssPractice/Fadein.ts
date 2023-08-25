@@ -1,5 +1,3 @@
-import { StyleSheet } from "@react-pdf/renderer";
-import { opacity } from "html2canvas/dist/types/css/property-descriptors/opacity";
 import { useRef, useCallback, useEffect } from "react";
 
 export const useScrollFadeIn = (
@@ -26,35 +24,37 @@ export const useScrollFadeIn = (
 
   const handleScroll = useCallback(
     ([entry]: any) => {
-      const { current } = dom;
-      if (entry.isIntersecting && current) {
-        current.style.transitionProperty = "all";
-        current.style.transitionDuration = `${duration}s`;
-        current.style.transitionTimingFunction = "cubic-bezier(0, 0, 0.2, 1)";
-        current.style.transitionDelay = `${delay}s`;
-        // current.style.opacity = 1;
-        current.style.transform = "translate3d(0, 0, 0)";
+      if (entry.isIntersecting) {
+        entry.target.style.transitionProperty = "all";
+        entry.target.style.transitionDuration = `${duration}s`;
+        entry.target.style.transitionTimingFunction =
+          "cubic-bezier(0, 0, 0.2, 1)";
+        entry.target.style.transitionDelay = `${delay}s`;
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translate3d(0, 0, 0)";
       }
     },
     [delay, duration]
-  );
+  ); //등록된 요소가 교차할 때 호출된다.
 
   useEffect(() => {
     let observer: IntersectionObserver;
     const { current } = dom;
 
     if (current) {
-      observer = new IntersectionObserver(handleScroll, { threshold: 0.7 });
-      observer.observe(current);
+      observer = new IntersectionObserver(handleScroll, { threshold: 0.7 }); // intersection observer 호출
+
+      console.log(observer);
+      observer.observe(current); // observer에 요소 등록
     }
 
-    return () => observer && observer.disconnect();
+    return () => observer.disconnect(); // 관찰중지
   }, [handleScroll]);
 
   return {
     ref: dom,
     style: {
-      opacity: 0,
+      opacity: "0",
       transform: handleDirection(direction),
     },
   };

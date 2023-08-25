@@ -21,7 +21,10 @@ export default function CssPractice() {
 
   const ref = useScrollFadeIn("left", "1", "0");
 
-  console.log(ref);
+  const ref2 = useScrollFadeIn("left", "1", "0");
+
+  // console.log(ref);
+  console.log(ref2);
   return (
     <div className=" transition-colors">
       fdffdsafs
@@ -524,6 +527,7 @@ export default function CssPractice() {
         varius vel pharetra vel. Nunc mattis enim ut tellus elementum. Tristique
         et egestas quis ipsum suspendisse ultrices gravida. Vivamus at augue
         eget arcu dictum varius duis at consectetur. Maecenas pharetra convallis
+        <div className=" bg-black w-[500px] h-[500px] rounded-sm" {...ref} />
         posuere morbi. Fringilla urna porttitor rhoncus dolor purus non. Fusce
         ut placerat orci nulla pellentesque dignissim enim sit. Elementum tempus
         egestas sed sed risus pretium quam. Ut aliquam purus sit amet luctus
@@ -738,6 +742,10 @@ export default function CssPractice() {
         quam vulputate dignissim. Lacus laoreet non curabitur gravida arcu ac
         tortor dignissim. Auctor neque vitae tempus quam pellentesque. Sed enim
         ut sem viverra aliquet. Faucibus vitae aliquet nec ullamcorper. Natoque
+        <div
+          className=" bg-yellow-300 w-[500px] h-[500px] rounded-sm"
+          {...ref2}
+        />
         penatibus et magnis dis parturient. Proin sed libero enim sed faucibus
         turpis in. Morbi quis commodo odio aenean. Vulputate mi sit amet mauris
         commodo quis. Malesuada fames ac turpis egestas. Etiam erat velit
@@ -1182,7 +1190,7 @@ export default function CssPractice() {
         sit amet porttitor eget. Tellus orci ac auctor augue mauris augue neque.
         Egestas erat imperdiet sed euismod nisi.
       </div>
-      <div {...ref}>fdsafdsfa</div>
+      {/* <div {...ref}>fdsafdsfa</div> */}
     </div>
   );
 }
