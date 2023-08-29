@@ -12,6 +12,7 @@ import ContextCheck from "./pages/ContextCheck/ContextCheck";
 import TestPage from "./pages/TestPaga/TestPage";
 import Component from "./pages/Composite/Component";
 import CssPractice from "./pages/CssPractice/Css";
+import TestPage1 from "./pages/Practice/TestPage1";
 
 function Router() {
   return (
@@ -29,6 +30,7 @@ function Router() {
         <Route path="/test" element=<TestPage /> />
         <Route path="/composite" element=<Component /> />
         <Route path="/css" element=<CssPractice /> />
+        <Route path="/testpage" element=<TestPage1 /> />
       </Routes>
     </BrowserRouter>
   );
