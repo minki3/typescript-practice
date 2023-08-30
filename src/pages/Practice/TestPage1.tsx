@@ -1,7 +1,26 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function TestPage() {
   const [file, setFile] = useState<any>([]);
+
+  const axiosdd = () => {
+    axios
+      .put("http://172.30.1.59:3000/presignedUrl")
+      .then((res) => res)
+      .then(
+        (res) =>
+          axios.put(`${res.data.presignedUrl}`, {
+            headers: {
+              // "Content-Type": `image/jpeg`,
+              // "Access-Control-Allow-Origin": `http://localhost:3000`,
+              // "Access-Control-Allow-Credentials": "true",
+            },
+            body: file,
+          })
+        // .then((res) => console.log(res))
+      );
+  };
 
   useEffect(() => {
     setFile(file);
@@ -25,7 +44,7 @@ export default function TestPage() {
 
     setFile(deletedFile);
   };
-  console.log(file);
+
   return (
     <div>
       <div className="p-2 border"></div>
@@ -40,6 +59,7 @@ export default function TestPage() {
         accept=".jpg, .png, .jpeg, .pdf, .word"
         onChange={pickedHandler}
         aria-label="append"
+        onClick={axiosdd}
       />
       {file &&
         file.map((item: any, index: number) => (
