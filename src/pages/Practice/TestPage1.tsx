@@ -3,50 +3,43 @@ import axios from "axios";
 
 export default function TestPage() {
   const [file, setFile] = useState<any>([]);
+  const [img, setImg] = useState<any>();
 
-  const axiosdd = () => {
-    axios
-      .put("http://172.30.1.59:3000/presignedUrl")
-      .then((res) => res)
-      .then(
-        (res) =>
-          axios.put(`${res.data.presignedUrl}`, {
-            headers: {
-              // "Content-Type": `image/jpeg`,
-              // "Access-Control-Allow-Origin": `http://localhost:3000`,
-              // "Access-Control-Allow-Credentials": "true",
-            },
-            body: file,
-          })
-        // .then((res) => console.log(res))
-      );
+  const axiosdd = async () => {
+    file.forEach(async (f: any) => {
+      console.log(f);
+      const res = await axios.put("http://54.180.86.175:3000/presignedUrl", {
+        name: f.name.split(".png")[0],
+      });
+      if (res.data.presignedUrl) {
+        await axios.put(`${res.data.presignedUrl}`, f);
+      }
+    });
+  };
+
+  const getImage = async () => {
+    await axios(`http://54.180.86.175:3000/presignedUrl?name=edu`).then(
+      (res) => {
+        setImg(res.data.presignedUrl);
+        console.log(res.data.presignedUrl);
+      }
+    );
   };
 
   useEffect(() => {
-    setFile(file);
-  }, [file]);
+    getImage();
+  }, []);
 
-  const pickedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let pickedFile = [];
-
+  const pickedHandler = (e: any) => {
     if (e.target.files) {
-      for (let i = 0; i < e.target.files.length; i++) {
-        pickedFile.push(e.target.files[i]);
-      }
-      setFile([...file, ...pickedFile]);
+      const pickedFiles = Array.from(e.target.files);
+      setFile([...file, ...pickedFiles]);
     }
-  };
-
-  const onDelete = (clickedIndex: number) => {
-    const deletedFile = file.filter(
-      (_: any, index: number) => index !== clickedIndex
-    );
-
-    setFile(deletedFile);
   };
 
   return (
     <div>
+      <img src={img} alt="dfdf"></img>
       <div className="p-2 border"></div>
       <label htmlFor="id" className=" rounded-sm border">
         추가하기
@@ -57,23 +50,12 @@ export default function TestPage() {
         type="file"
         multiple
         accept=".jpg, .png, .jpeg, .pdf, .word"
-        onChange={pickedHandler}
+        onChange={(e) => {
+          pickedHandler(e);
+        }}
         aria-label="append"
-        onClick={axiosdd}
       />
-      {file &&
-        file.map((item: any, index: number) => (
-          <div key={index}>
-            <div>{item.name}</div>
-            <button
-              onClick={() => {
-                onDelete(index);
-              }}
-            >
-              delete
-            </button>
-          </div>
-        ))}
+      <button onClick={axiosdd}>보내기</button>
     </div>
   );
 }
