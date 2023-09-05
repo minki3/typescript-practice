@@ -21,7 +21,7 @@ export default function CssPractice() {
 
   const ref = useScrollFadeIn("left", "1", "0");
 
-  const ref2 = useScrollFadeIn("left", "1", "0");
+  const ref2 = useScrollFadeIn("down", "1", "0");
 
   // console.log(ref);
   console.log(ref2);
@@ -1191,6 +1191,7 @@ export default function CssPractice() {
         Egestas erat imperdiet sed euismod nisi.
       </div>
       {/* <div {...ref}>fdsafdsfa</div> */}
+      <div>abcdefg</div>
     </div>
   );
 }

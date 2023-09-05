@@ -13,6 +13,7 @@ import TestPage from "./pages/TestPaga/TestPage";
 import Component from "./pages/Composite/Component";
 import CssPractice from "./pages/CssPractice/Css";
 import TestPage1 from "./pages/Practice/TestPage1";
+import Motion from "./pages/Framer/Motion";
 
 function Router() {
   return (
@@ -31,6 +32,7 @@ function Router() {
         <Route path="/composite" element=<Component /> />
         <Route path="/css" element=<CssPractice /> />
         <Route path="/testpage" element=<TestPage1 /> />
+        <Route path="/motion" element=<Motion /> />
       </Routes>
     </BrowserRouter>
   );
