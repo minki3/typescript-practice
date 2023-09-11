@@ -42,7 +42,7 @@ export const useScrollFadeIn = (
     const { current } = dom;
 
     if (current) {
-      observer = new IntersectionObserver(handleScroll, { threshold: 0.7 }); // intersection observer 호출
+      observer = new IntersectionObserver(handleScroll, { threshold: 0.3 }); // intersection observer 호출
 
       console.log(observer);
       observer.observe(current); // observer에 요소 등록
