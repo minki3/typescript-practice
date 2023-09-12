@@ -35,7 +35,7 @@ function Introduce(props: any, ref: any) {
   };
 
   return (
-    <section className="h-[830px] flex justify-center items-center" ref={ref}>
+    <section className="h-[830px] flex justify-center items-center " ref={ref}>
       <motion.div
         variants={boxVariants}
         initial="out"

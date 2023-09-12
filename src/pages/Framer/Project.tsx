@@ -50,7 +50,7 @@ export default function Project() {
       <motion.div
         animate={control}
         variants={skillsVariants}
-        className="text-2xl flex justify-center items-center h-[100px]"
+        className="text-2xl flex justify-center items-center h-[200px]"
       >
         Project
       </motion.div>

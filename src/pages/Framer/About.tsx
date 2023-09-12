@@ -4,7 +4,9 @@ import { useInView } from "react-intersection-observer";
 
 export default function Project() {
   const control = useAnimation();
+
   const [ref, inView] = useInView();
+
   useEffect(() => {
     if (inView) {
       control.start("visible");
@@ -45,11 +47,11 @@ export default function Project() {
   };
 
   return (
-    <section className="h-[830px] bg-white text-black" ref={ref}>
+    <section className="h-[830px] bg-white text-black " ref={ref}>
       <motion.div
         animate={control}
         variants={skillsVariants}
-        className="text-2xl flex justify-center items-center h-[100px]"
+        className="text-2xl flex justify-center items-center h-[200px]"
       >
         About
       </motion.div>
