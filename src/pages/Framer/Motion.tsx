@@ -10,7 +10,7 @@ export default function Framer() {
   const handleButton = (idx: number) => {
     tabRef.current[idx].scrollIntoView();
   };
-  console.log(window.scrollY);
+
   return (
     <section>
       <Navigation tabList={tabList} handleButton={handleButton} />
@@ -30,7 +30,6 @@ export default function Framer() {
   );
 }
 
-// const tabList = [<Introduce />, <About />, <Project />];
 const tabList = [
   { title: "Introduce", component: <Introduce /> },
   { title: "About", component: <About /> },

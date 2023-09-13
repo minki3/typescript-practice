@@ -1,5 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useSpring, useAnimation } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useAnimation,
+  AnimatePresence,
+} from "framer-motion";
 import throttle from "lodash/throttle";
 
 interface Props {
@@ -54,32 +60,39 @@ export default function Navigation({ tabList, handleButton }: Props) {
     },
   };
   return (
-    <motion.section
-      className={`fixed top-0 left-0 right-0  z-10  pb-4 bg-gray-300 text-black ${
-        hide ? "" : "hidden"
-      }`}
-      transition={{ duration: 0.3 }}
-      variants={variants}
-    >
-      <motion.div
-        style={{ scaleX }}
-        className="bg-yellow-200 h-5 origin-left"
-      />
-      <ul className="flex">
-        {tabList.map((item: any, idx: number) => {
-          return (
-            <li
-              key={idx}
-              onClick={() => {
-                handleButton(idx);
-              }}
-              className="mx-6 list-[upper-none]"
-            >
-              <span>{item.title}</span>
-            </li>
-          );
-        })}
-      </ul>
-    </motion.section>
+    <>
+      <AnimatePresence>
+        {hide && (
+          <motion.section
+            className={`fixed top-0 left-0 right-0  z-10  pb-4 bg-gray-300 text-black`}
+            variants={variants}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              style={{ scaleX }}
+              className="bg-yellow-200 h-5 origin-left"
+            />
+            <ul className="flex">
+              {tabList.map((item: any, idx: number) => {
+                return (
+                  <li
+                    key={idx}
+                    onClick={() => {
+                      handleButton(idx);
+                    }}
+                    className="mx-6 list-[upper-none]"
+                  >
+                    <span>{item.title}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.section>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

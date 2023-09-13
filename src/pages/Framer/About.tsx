@@ -1,8 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useSpring, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import ModalPortal from "../../ModalPortal";
+import Modal from "./Modal";
 
 export default function Project() {
+  const [isOpen, setIsOpen] = useState<String>("");
+  console.log(isOpen);
+
   const control = useAnimation();
 
   const [ref, inView] = useInView();
@@ -63,20 +68,28 @@ export default function Project() {
         <motion.div
           className="w-[300px] h-[300px] bg-yellow-400"
           variants={skills}
+          onClick={() => {
+            isOpen === "about1" ? setIsOpen("") : setIsOpen("about1");
+          }}
         >
           about1
+        </motion.div>
+        {isOpen === "about1" && (
+          <ModalPortal>
+            <Modal />
+          </ModalPortal>
+        )}
+        <motion.div
+          className="w-[300px] h-[300px] bg-yellow-400"
+          variants={skills}
+        >
+          about2
         </motion.div>
         <motion.div
           className="w-[300px] h-[300px] bg-yellow-400"
           variants={skills}
         >
-          about1
-        </motion.div>
-        <motion.div
-          className="w-[300px] h-[300px] bg-yellow-400"
-          variants={skills}
-        >
-          about1
+          about3
         </motion.div>
       </motion.section>
     </section>
