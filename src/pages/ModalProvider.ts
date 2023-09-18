@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { createContext } from "react";
+import React, { useState, createContext } from "react";
 
 interface ModalsProviderProps {
   children: React.ReactElement | React.ReactElement[];
@@ -41,11 +40,7 @@ const ModalsProvider = ({ children }: ModalsProviderProps) => {
 
   return (
     <ModalsStateContext.Provider value={openedModals}>
-      <ModalsDispatchContext.Provider value={dispatch}>
-        {children}
-      </ModalsDispatchContext.Provider>
+      {children}
     </ModalsStateContext.Provider>
   );
 };
-
-export default ModalsProvider;
