@@ -39,8 +39,9 @@ const ModalsProvider = ({ children }: ModalsProviderProps) => {
   const dispatch = { open, close };
 
   return (
-    <ModalsStateContext.Provider value={openedModals}>
+    <ModalsStateContext.Provider value={{ openedModals }}>
       {children}
     </ModalsStateContext.Provider>
   );
 };
+export default ModalsProvider;
